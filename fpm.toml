@@ -1,0 +1,12 @@
+name = "Brainfuck"
+version = "0.1.0"
+license = "MIT"
+author = "SRAZKVT"
+maintainer = "sarah.mathey66666@gmail.com"
+copyright = "Copyright 2022, SRAZKVT"
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+[install]
+library = false
