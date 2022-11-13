@@ -15,6 +15,9 @@ program main
         if (exists) then
             call read_file(filepath, code)
             call interpret(code)
+        else if (trim(filepath) == trim("-c")) then
+            call get_arg(2, code)
+            call interpret(code)
         else
             print *, "Please insert a valid file path"
         end if

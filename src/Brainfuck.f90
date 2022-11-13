@@ -33,31 +33,31 @@ contains
         integer :: ip = 1, tp = 1, i
         character(len=65536) :: tape
 
-        do while (ip < len_trim(code))
-            if (code(ip:ip) .eq. ">") then
+        do while (ip <= len_trim(code))
+            if (code(ip:ip) == ">") then
                 tp = tp + 1
                 ip = ip + 1
-            else if (code(ip:ip) .eq. "<") then
+            else if (code(ip:ip) == "<") then
                 tp = tp - 1
                 ip = ip + 1
-            else if (code(ip:ip) .eq. "+") then
+            else if (code(ip:ip) == "+") then
                 tape(tp:tp) = char(ichar(tape(tp:tp)) + 1)
                 ip = ip + 1
-            else if (code(ip:ip) .eq. "-") then
+            else if (code(ip:ip) == "-") then
                 tape(tp:tp) = char(ichar(tape(tp:tp)) - 1)
                 ip = ip + 1
-            else if (code(ip:ip) .eq. ",") then
+            else if (code(ip:ip) == ",") then
                 tape(tp:tp) = get_char()
                 ip = ip + 1
-            else if (code(ip:ip) .eq. ".") then
+            else if (code(ip:ip) == ".") then
                 write(*, fmt="(a)", advance="no") tape(tp:tp)
                 ip = ip + 1
-            else if (code(ip:ip) .eq. "[") then
-                if (ichar(tape(tp:tp)) .eq. 0) then
+            else if (code(ip:ip) == "[") then
+                if (ichar(tape(tp:tp)) == 0) then
                     i = 1
                     do while (i > 0)
                         ip = ip + 1
-                        if (code(ip:ip) .eq. "[") then
+                        if (code(ip:ip) == "[") then
                             i = i + 1
                         else if (code(ip:ip) == "]") then
                             i = i - 1
@@ -65,13 +65,13 @@ contains
                     end do
                 end if
                 ip = ip + 1
-            else if (code(ip:ip) .eq. "]") then
+            else if (code(ip:ip) == "]") then
                 i = 1
                 do while (i > 0)
                     ip = ip - 1
-                    if (code(ip:ip) .eq. "[") then
+                    if (code(ip:ip) == "[") then
                         i = i - 1
-                    else if (code(ip:ip) .eq. "]") then
+                    else if (code(ip:ip) == "]") then
                         i = i + 1
                     end if
                 end do
